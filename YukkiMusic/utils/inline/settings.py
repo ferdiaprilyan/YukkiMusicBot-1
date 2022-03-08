@@ -13,7 +13,7 @@ from pyrogram.types import InlineKeyboardButton
 
 
 def setting_markup(_):
-    buttons = [
+    return [
         [
             InlineKeyboardButton(
                 text=_["ST_B_1"], callback_data="AQ"
@@ -44,7 +44,6 @@ def setting_markup(_):
             ),
         ],
     ]
-    return buttons
 
 
 def audio_quality_markup(
@@ -53,7 +52,7 @@ def audio_quality_markup(
     medium: Union[bool, str] = None,
     high: Union[bool, str] = None,
 ):
-    buttons = [
+    return [
         [
             InlineKeyboardButton(
                 text=_["ST_B_8"].format("✅")
@@ -88,7 +87,6 @@ def audio_quality_markup(
             ),
         ],
     ]
-    return buttons
 
 
 def video_quality_markup(
@@ -97,7 +95,7 @@ def video_quality_markup(
     medium: Union[bool, str] = None,
     high: Union[bool, str] = None,
 ):
-    buttons = [
+    return [
         [
             InlineKeyboardButton(
                 text=_["ST_B_11"].format("✅")
@@ -132,13 +130,12 @@ def video_quality_markup(
             ),
         ],
     ]
-    return buttons
 
 
 def cleanmode_settings_markup(
     _, status: Union[bool, str] = None, dels: Union[bool, str] = None
 ):
-    buttons = [
+    return [
         [
             InlineKeyboardButton(
                 text=_["ST_B_7"], callback_data="CMANSWER"
@@ -167,11 +164,10 @@ def cleanmode_settings_markup(
             ),
         ],
     ]
-    return buttons
 
 
 def auth_users_markup(_, status: Union[bool, str] = None):
-    buttons = [
+    return [
         [
             InlineKeyboardButton(
                 text=_["ST_B_3"], callback_data="AUTHANSWER"
@@ -196,7 +192,6 @@ def auth_users_markup(_, status: Union[bool, str] = None):
             ),
         ],
     ]
-    return buttons
 
 
 def playmode_users_markup(
@@ -205,7 +200,7 @@ def playmode_users_markup(
     Group: Union[bool, str] = None,
     Playtype: Union[bool, str] = None,
 ):
-    buttons = [
+    return [
         [
             InlineKeyboardButton(
                 text=_["ST_B_19"], callback_data="SEARCHANSWER"
@@ -245,4 +240,3 @@ def playmode_users_markup(
             ),
         ],
     ]
-    return buttons

@@ -47,26 +47,17 @@ class YouTubeAPI:
     async def exists(
         self, link: str, videoid: Union[bool, str] = None
     ):
-        if videoid:
-            link = self.status + self.base + link
-        else:
-            link = self.status + link
+        link = self.status + self.base + link if videoid else self.status + link
         async with aiohttp.ClientSession() as session:
             async with session.get(link) as response:
-                if response.status != 200:
-                    return False
-                else:
-                    return True
+                return response.status == 200
 
     async def valid(
         self, link: str, videoid: Union[bool, str] = None
     ):
         if videoid:
             link = self.base + link
-        if re.search(self.regex, link):
-            return True
-        else:
-            return False
+        return bool(re.search(self.regex, link))
 
     async def url(self, message_1: Message) -> Union[str, None]:
         messages = [message_1]
@@ -215,7 +206,7 @@ class YouTubeAPI:
                     str(format["format"])
                 except:
                     continue
-                if not "dash" in str(format["format"]).lower():
+                if "dash" not in str(format["format"]).lower():
                     try:
                         format["format"]
                         format["filesize"]
